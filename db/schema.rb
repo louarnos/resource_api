@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170410030759) do
+ActiveRecord::Schema.define(version: 20170413233842) do
 
   create_table "addresses", force: :cascade do |t|
-    t.integer  "resource_id"
+    t.integer  "resource_id",    null: false
     t.string   "street_address", null: false
     t.string   "city"
     t.string   "state"
@@ -26,14 +26,14 @@ ActiveRecord::Schema.define(version: 20170410030759) do
   add_index "addresses", ["resource_id"], name: "index_addresses_on_resource_id"
 
   create_table "categories", force: :cascade do |t|
-    t.string   "category_type"
+    t.string   "category_type", null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
   create_table "resource_categories", force: :cascade do |t|
-    t.integer  "resource_id"
-    t.integer  "category_id"
+    t.integer  "resource_id", null: false
+    t.integer  "category_id", null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 20170410030759) do
   add_index "resource_categories", ["resource_id"], name: "index_resource_categories_on_resource_id"
 
   create_table "resource_services", force: :cascade do |t|
-    t.integer  "resource_id"
-    t.integer  "service_id"
+    t.integer  "resource_id", null: false
+    t.integer  "service_id",  null: false
     t.datetime "created_at",  null: false
     t.datetime "updated_at",  null: false
   end
@@ -52,7 +52,7 @@ ActiveRecord::Schema.define(version: 20170410030759) do
   add_index "resource_services", ["service_id"], name: "index_resource_services_on_service_id"
 
   create_table "resources", force: :cascade do |t|
-    t.string   "organization"
+    t.string   "organization", null: false
     t.string   "description"
     t.string   "phone_number"
     t.string   "website"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20170410030759) do
   end
 
   create_table "services", force: :cascade do |t|
-    t.string   "service_type"
+    t.string   "service_type", null: false
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
   end
