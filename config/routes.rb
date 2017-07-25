@@ -55,4 +55,6 @@ Rails.application.routes.draw do
   #   end
     get '/resources', to: 'resources#index'
     get '/resources/:id', to: 'resources#show'
+    post '/resources', to: 'resources#create'
+    delete '/resources/:id', to: 'resources#delete'
 end
